@@ -1,12 +1,5 @@
 import shelve, BaseN, random, pprint
 
-''' shortlink alg:
-- take in string
-- get size of db and add 1
-- 'hash' is the size+1 >> to custom PNS w/ 66-base (0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_.-~)
-- insert new unique hashkey with string into db and return hashkey
-'''
-
 DIGIT_SET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_.-~'
 
 try:
@@ -20,9 +13,6 @@ except IOError:
     print('ERROR: Could not read from USED_IDS db')
 
 def new_link(link_str):
-    # if link_str not in db:
-    # n = size of db
-
     if link_str in LINKS.keys():
         return LINKS[link_str]['ID']
 
