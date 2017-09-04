@@ -34,9 +34,21 @@ def make_shortlink(link_str):
 def verify_url(x):
     print('checking %s...' % x)
     result = urlparse(x)
-    for i in [result.scheme, result.netloc]:
-        if i == '':
-            print('  something is wrong with %s!' % str(result))
+    if result.scheme == '':
+        print('  invalid URI %s!' % str(result))
+        return False
+    elif result.scheme in ['http', 'https']:
+        if result.netloc == '':
+            print('  invalid http/s: %s!' % str(result))
             return False
-    print('  valid URI!', [result.scheme, result.netloc, result.path])
-    return True
+        else:
+            print('  valid URI!', [result.scheme, result.netloc, result.path])
+            return True
+    else:
+        if result.path == '':
+            print('  invalid URI %s!' % str(result))
+            return False
+        else:
+            print('  valid URI!', [result.scheme, result.netloc, result.path])
+            return True
+
