@@ -1,0 +1,17 @@
+{% extends 'layout/default.html.j2' %}
+
+{% block content %}
+{% if error %}
+    <p><b>ERROR:</b> {{ error }}</p>
+{% endif %}
+
+{% if new_link %}
+    <p><b>Link created:</b> <a href="/{{ new_link }}">link.lingren.co/{{ new_link }}</a></p>
+{% endif %}
+
+<form action='/' method='POST'>
+    link to shorten:  <input id='link' name='link' />
+    <button type='submit'>Create Shortlink</button>
+</form>
+
+{% endblock %}
