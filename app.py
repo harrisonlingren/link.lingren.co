@@ -24,6 +24,10 @@ def link_redirect(link_id):
     else:
         return render_template('/index.html.j2', error='Link not found!')
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+    
 def make_shortlink(link_str):
     if verify_url(link_str):
         result = links.new_link(link_str)
