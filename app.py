@@ -26,7 +26,7 @@ def link_redirect(link_id):
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return render_template('404.html.j2'), 404
     
 def make_shortlink(link_str):
     if verify_url(link_str):
