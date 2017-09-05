@@ -23,10 +23,6 @@ def link_redirect(link_id):
         return redirect(redir_link)
     else:
         return abort(404), 404
-
-@app.route('/static/<fn>')
-def static_file(fn):
-    return redirect(url_for('static', filename=fn))
     
 @app.errorhandler(404)
 def page_not_found(e):
