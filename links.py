@@ -1,13 +1,15 @@
-import BaseN, random, pprint, os
+import BaseN, random, pprint, json
 from pymongo import MongoClient
 
 DIGIT_SET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_.-~'
 
-# connect to mongo
-DB_CONN_STR = os.environ['DB_CONN_STR']
-dbc = MongoClient(DB_CONN_STR)
+# get connection string
+DB_CONN_STR = ''
+with open('client-secrets.json') as f:
+    DB_CONN_STR = json.loads( f.read() )['DB_CONN_STR']
 
-# get database & collection
+# connect to mongo and get collection
+dbc = MongoClient(DB_CONN_STR)
 link_db = dbc.fastlink
 LINKS = link_db.LINKS
 
