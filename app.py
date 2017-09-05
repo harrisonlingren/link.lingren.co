@@ -64,3 +64,5 @@ def verify_url(x):
             print('  valid URI!', [result.scheme, result.netloc, result.path])
             return True
 
+if __name__ == '__main__':
+    app.run()
