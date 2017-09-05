@@ -24,6 +24,10 @@ def link_redirect(link_id):
     else:
         return abort(404), 404
 
+@app.route('/static/<fn>')
+def static_file(fn):
+    return redirect(url_for('static', filename=fn))
+    
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html.j2'), 404
