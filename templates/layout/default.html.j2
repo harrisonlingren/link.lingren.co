@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     {% block head %}
-    <link rel="stylesheet" type="text/css" href="/static/style.css" />
+    <link rel="stylesheet" type="text/css" href="/static/style.css?{{ datetime.now().strftime('%S') }}" />
     <title>{% block title %}{% endblock %}fastl.ink</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock %}
 </head>
 <body>
     <div id="header">
-        <img id="logo" src="/static/logo.svg" />
+        <img id="logo" src="/static/logo.svg?{{ datetime.now().strftime('%S') }}" />
     </div>
     <div id="content">
         {% block content %}
