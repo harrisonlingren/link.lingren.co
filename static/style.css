@@ -16,9 +16,11 @@ input, button {
   background-color: #fff;
   border-style: solid;
   border-color: #fafafa;
-  margin-bottom: 15px;
   margin-top: 15px;
+  width: 100%
 }
+
+input { box-sizing: border-box; }
 
 #header {
   padding: 15px;
@@ -38,20 +40,19 @@ input, button {
 }
 
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 650px) {
   #logo { width: 50%; }
   #content { width: 80%; }
   input, button {
-    width: 50%;
     padding: 5px;
   }
-  
 }
 
-@media only screen and (min-width: 501px) {
+@media only screen and (min-width: 650px) {
   input, button {
     padding: 10px;
     font-size: large;
+    margin-bottom: 15px;
   }
   #logo { width: 30% }
   #content { width: 60% }
