@@ -11,21 +11,13 @@ body {
   display: block;
 }
 
-input {
+input, button {
   border-radius: 5px;
   background-color: #fff;
   border-style: solid;
   border-color: #fafafa;
   margin-bottom: 15px;
   margin-top: 15px;
-}
-
-button {
-  padding: 5px;
-  border-radius: 5px;
-  border-style: solid;
-  background-color: #fff;
-  border-color: #fafafa;
 }
 
 #header {
@@ -49,7 +41,7 @@ button {
 @media only screen and (max-width: 500px) {
   #logo { width: 50%; }
   #content { width: 80%; }
-  input {
+  input, button {
     width: 50%;
     padding: 5px;
   }
@@ -57,11 +49,10 @@ button {
 }
 
 @media only screen and (min-width: 501px) {
-  input {
+  input, button {
     padding: 10px;
     font-size: large;
   }
   #logo { width: 30% }
   #content { width: 60% }
-  
 }
