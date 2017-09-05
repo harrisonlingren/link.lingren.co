@@ -7,15 +7,12 @@ body {
 }
 
 #logo {
-  width: 50%;
   margin: 0 auto;
   display: block;
 }
 
 input {
-  width: 50%;
   border-radius: 5px;
-  padding: 5px;
   background-color: #fff;
   border-style: solid;
   border-color: #fafafa;
@@ -36,7 +33,6 @@ button {
 }
 
 #content {
-  width: 80%;
   margin: 0 auto;
 }
 
@@ -47,4 +43,25 @@ button {
   left: 0;
   text-align: center;
   width: 100%;
+}
+
+
+@media only screen and (max-width: 500px) {
+  #logo { width: 50%; }
+  #content { width: 80%; }
+  input {
+    width: 50%;
+    padding: 5px;
+  }
+  
+}
+
+@media only screen and (min-width: 501px) {
+  input {
+    padding: 10px;
+    font-size: large;
+  }
+  #logo { width: 30% }
+  #content { width: 60% }
+  
 }
