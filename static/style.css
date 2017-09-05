@@ -1,1 +1,42 @@
+body {
+  background-color: #006B96;
+  background: -webkit-linear-gradient(315deg, #006B96 0%, #006B96 30%, #00b6ff 100%) fixed;
+  background: linear-gradient(135deg, #006B96 0%, #006B96 30%, #00b6ff 100%) fixed;
+  margin: 0 auto;
+  display: block;
+}
 
+#logo {
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+}
+
+input {
+  width: 50%;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #fff;
+  border-style: solid;
+  border-color: #fafafa;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+#header {
+  padding: 15px;
+}
+
+#content {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#footer {
+  position: absolute;
+  padding-bottom: 5px;
+  bottom: 0px;
+  left: 0;
+  text-align: center;
+  width: 100%;
+}
