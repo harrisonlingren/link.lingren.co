@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, url_for, render_template
+from flask import Flask, request, redirect, render_template, abort
 from urllib.parse import urlparse
 import links
 
@@ -22,7 +22,7 @@ def link_redirect(link_id):
     if redir_link:
         return redirect(redir_link)
     else:
-        return render_template('/index.html.j2', error='Link not found!')
+        return abort(404), 404
 
 @app.errorhandler(404)
 def page_not_found(e):
