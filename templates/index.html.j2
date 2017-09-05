@@ -7,6 +7,9 @@
 
 {% if new_link %}
     <p><b>Link created:</b> <a href="/{{ new_link }}">https://fastl.ink/{{ new_link }}</a></p>
+    <button class="btn" data-clipboard-text="{{ new_link }}">
+        Copy link
+    </button>
 {% endif %}
 
 <form action='/' method='POST'>
