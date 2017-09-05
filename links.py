@@ -1,45 +1,48 @@
-import shelve, BaseN, random, pprint
+import BaseN, random, pprint, os
+from pymongo import MongoClient
 
 DIGIT_SET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_.-~'
 
-try:
-    USED_IDS = shelve.open('USED_IDS.db')
-except IOError:
-    print('ERROR: Could not read from USED_IDS db')
+# connect to mongo
+DB_CONN_STR = os.environ['DB_CONN_STR']
+dbc = MongoClient(DB_CONN_STR)
 
-try:
-    LINKS = shelve.open('LINKS.db')
-except IOError:
-    print('ERROR: Could not read from USED_IDS db')
+# get database & collection
+link_db = dbc.fastlink
+LINKS = link_db.LINKS
 
+# create a new shortlink ID for URI link_str
 def new_link(link_str):
-    if link_str in LINKS.keys():
-        return LINKS[link_str]['ID']
+    # check if shortlink exists for URI
+    link_found = uri_search(link_str)
+    print('existing link found: %s' % link_found)
+    if link_found is not None:
+        return link_found['short_id']
+    else:
+        nextId = generate_new_id()
+        next_link = {
+            'short_id': nextId,
+            'uri': link_str,
+        }
 
+        LINKS.insert_one(next_link)
+        return next_link['short_id']
+
+# search mongo collection for id = link_id
+def short_id_search(link_id):
+    return LINKS.find_one({'short_id': link_id})
+
+# search mongo collection for uri = link_uri
+def uri_search(link_uri):
+    return LINKS.find_one({'uri': link_uri})
+
+# generate random ID, search mongo collection (until a unique ID is found)
+def generate_new_id():
     searching = True
     while searching:
         nextIdBase = random.randint(1252332576, 82653950015)
         nextId = BaseN.DecToBaseN(str(nextIdBase), DIGIT_SET)
-
-        if nextId not in USED_IDS:
+        print('searching for %s' % nextId)
+        if LINKS.find_one({'short_id': nextId}) is None:
             searching = False
-
-    newLink = {
-        'ID': nextId,
-        'link': link_str,
-    }
-
-    USED_IDS[nextId] = link_str
-    LINKS[link_str] = newLink
-
-    return newLink['ID']
-
-def get_link(link_id):
-    if link_id in USED_IDS.keys():
-        return USED_IDS[link_id]
-    else:
-        return None
-
-def show_links():
-    for link in LINKS.items():
-        pprint.pprint(link)
+    return nextId

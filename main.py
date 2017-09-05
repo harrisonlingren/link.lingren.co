@@ -1,6 +1,6 @@
-from flask import Flask, request, redirect, render_template, abort, url_for, send_from_directory
-from urllib.parse import urlparse
-import links, datetime
+from flask import Flask, request, redirect, render_template, abort
+from urlparse import urlparse
+import links
 
 app = Flask(__name__)
 
@@ -18,9 +18,9 @@ def index():
 
 @app.route('/<link_id>')
 def link_redirect(link_id):
-    redir_link = links.get_link(link_id)
+    redir_link = links.short_id_search(link_id)
     if redir_link:
-        return redirect(redir_link)
+        return redirect(redir_link['uri'])
     else:
         return abort(404), 404
 
