@@ -2,14 +2,32 @@
 <html lang="en">
 <head>
     {% block head %}
-    <link rel="stylesheet" type="text/css" href="/static/style.css?{{ datetime.now().strftime('%S') }}" />
+    
+    <script>
+        var x = new Date()
+        x = x.getTime()
+        var link = document.createElement( "link" );
+        link.href = '/static/style.css?'+ x
+        link.rel = 'stylesheet'
+        link.type = 'text/css'
+        document.getElementsByTagName( "head" )[0].appendChild( link );
+    </script>
+    
     <title>{% block title %}{% endblock %}fastl.ink</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock %}
 </head>
 <body>
     <div id="header">
-        <img id="logo" src="/static/logo.svg?{{ datetime.now().strftime('%S') }}" />
+        <script>
+            var x = new Date()
+            x = x.getTime()
+            var logo = document.createElement( "img" );
+            logo.href = '/static/logo.svg?'+ x
+            logo.id = 'logo'
+            document.getElementsById( "header" )[0].appendChild( logo );
+        </script>
+        
     </div>
     <div id="content">
         {% block content %}
