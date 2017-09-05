@@ -18,6 +18,11 @@ a:hover { text-decoration: underline; }
   display: block;
 }
 
+#newLink {
+  margin: 0 auto;
+  text-align: center;
+}
+
 input, button {
   border-radius: 5px;
   background-color: #fff;
@@ -63,4 +68,8 @@ input { box-sizing: border-box; }
   }
   #logo { width: 30% }
   #content { width: 60% }
+  #cb {
+    width: 20%;
+    margin-left: 10px;
+  }
 }
