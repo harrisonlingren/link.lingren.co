@@ -20,6 +20,10 @@
     clipboard.on('success', function(e) {
         btn.value = 'Copied!'
     });
+    
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
 
     </script>
 {% endif %}
