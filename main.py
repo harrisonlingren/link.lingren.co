@@ -2,7 +2,7 @@ from flask import Flask, request, redirect, render_template, abort, url_for, sen
 from urllib.parse import urlparse
 import links, datetime
 
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -23,19 +23,11 @@ def link_redirect(link_id):
         return redirect(redir_link)
     else:
         return abort(404), 404
-'''
-@app.route('/css/<filename>')
-def serve_css(filename):
-    return send_from_directory('css', filename)
 
-@app.route('/img/<filename>')
-def serve_img(filename):
-    return send_from_directory('img', filename)
-'''
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html.j2'), 404
-    
+
 def make_shortlink(link_str):
     if verify_url(link_str):
         result = links.new_link(link_str)
