@@ -7,24 +7,11 @@
 
 {% if new_link %}
     <p><b>Link created:</b> <a href="/{{ new_link }}">https://fastl.ink/{{ new_link }}</a>
-    <button id="copyBtn" data-clipboard-text="{{ new_link }}">
-        Copy link
-    </button>
-    </p>
-    
+    <button id="cb" data-clipboard-text="https://fastl.ink/{{ new_link }}">Copy link</button></p>
     <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.7.1/dist/clipboard.min.js"></script>
     <script>
-    var btn = document.getElementById('copyBtn');
-    var clipboard = new Clipboard(btn);
-    
-    clipboard.on('success', function(e) {
-        btn.value = 'Copied!'
-    });
-    
-    clipboard.on('error', function(e) {
-        console.log(e);
-    });
-
+        var b= document.getElementById('cb'); var c = new Clipboard(b);
+        c.on('success', function(e) { b.innerText = 'Copied!' }); c.on('error', function(e) { console.log(e); });
     </script>
 {% endif %}
 
