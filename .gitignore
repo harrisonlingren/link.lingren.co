@@ -99,3 +99,10 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+
+
+# gae-specific
+client-secrets.json
+app.yaml
+appengine_config.py
