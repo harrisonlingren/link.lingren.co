@@ -23,6 +23,14 @@ input {
   margin-top: 15px;
 }
 
+button {
+  padding: 5px;
+  border-radius: 5px;
+  border-style: solid;
+  background-color: #fff;
+  border-color: #fafafa;
+}
+
 #header {
   padding: 15px;
 }
