@@ -4,14 +4,16 @@ body {
   background-color: #006B96;
   background: -webkit-linear-gradient(315deg, #006B96 0%, #006B96 30%, #00b6ff 100%) fixed;
   background: linear-gradient(135deg, #006B96 0%, #006B96 30%, #00b6ff 100%) fixed;
+  background-attachment:fixed;
+  height:100%;
   margin: 0 auto;
   display: block;
   font-family: 'Open Sans', sans-serif;
   color: #fff;
 }
 
-a { color: #fafafa; text-decoration: none; }
-a:hover { text-decoration: underline; }
+a { color: #fafafa; text-decoration: underline; }
+a:hover { text-decoration: none; }
 
 #logo {
   margin: 0 auto;
