@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     {% block head %}
-    
+
     <script>
         var x = new Date()
         x = x.getTime()
@@ -12,7 +12,7 @@
         link.type = 'text/css'
         document.getElementsByTagName( "head" )[0].appendChild( link );
     </script>
-    
+
     <title>{% block title %}{% endblock %}fastl.ink</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock %}
@@ -27,7 +27,7 @@
             logo.id = 'logo'
             document.getElementById( "header" ).appendChild( logo );
         </script>
-        
+
     </div>
     <div id="content">
         {% block content %}
@@ -35,8 +35,29 @@
     </div>
     <div id="footer">
         {% block footer %}
-        &copy; Copyright 2017 by <a href="http://lingren.co/">Harrison Lingren</a>
         {% endblock %}
+        <div align="center">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- fastl.ink footer ad -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-8481113276362946"
+                 data-ad-slot="3653465638"
+                 data-ad-format="auto">
+             </ins>
+             &copy; Copyright 2017 by <a href="http://lingren.co/">Harrison Lingren</a>
+        </div>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-106055055-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>
