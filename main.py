@@ -10,11 +10,11 @@ def index():
         shortlink = make_shortlink(request.form['link'])
         print('SHORTLINK: %s' % shortlink)
         if shortlink:
-            return render_template('/index.html.j2', new_link=shortlink)
+            return render_template('/index.html', new_link=shortlink)
         else:
-            return render_template('/index.html.j2', error='URL must be valid!')
+            return render_template('/index.html', error='URL must be valid!')
     else:
-        return render_template('/index.html.j2')
+        return render_template('/index.html')
 
 @app.route('/<link_id>')
 def link_redirect(link_id):
@@ -26,7 +26,7 @@ def link_redirect(link_id):
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html.j2'), 404
+    return render_template('404.html'), 404
 
 def make_shortlink(link_str):
     if verify_url(link_str):
