@@ -19,6 +19,7 @@ def index():
 @app.route('/<link_id>')
 def link_redirect(link_id):
     redir_link = links.short_id_search(link_id)
+    print('redir: %s' % redir_link)
     if redir_link:
         return redirect(redir_link['uri'])
     else:
