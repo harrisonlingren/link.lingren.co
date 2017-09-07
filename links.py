@@ -23,6 +23,7 @@ def new_link(link_str):
         next_link = {
             'short_id': nextId,
             'uri': link_str,
+            'clicks': 0
         }
 
         LINKS.insert_one(next_link)
@@ -30,7 +31,15 @@ def new_link(link_str):
 
 # search mongo collection for id = link_id
 def short_id_search(link_id):
-    return LINKS.find_one({'short_id': link_id})
+    # if link exists, update click count
+    check = LINKS.find_one({'short_id': link_id})
+    if check is not None:
+        print(LINKS.find_one({'short_id': link_id}))
+        LINKS.update_one({'short_id': link_id}, {'$inc': {'clicks': 1}})
+        print(LINKS.find_one({'short_id': link_id}))
+        return check
+    else:
+        return None
 
 # search mongo collection for uri = link_uri
 def uri_search(link_uri):
