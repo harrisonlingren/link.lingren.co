@@ -2,32 +2,16 @@
 <html lang="en">
 <head>
     {% block head %}
-
-    <script>
-        var x = new Date()
-        x = x.getTime()
-        var link = document.createElement( "link" );
-        link.href = '/static/style.css?'+ x
-        link.rel = 'stylesheet'
-        link.type = 'text/css'
-        document.getElementsByTagName( "head" )[0].appendChild( link );
-    </script>
-
-    <title>{% block title %}{% endblock %}fastl.ink</title>
+    <script>var x=new Date;x=x.getTime();var link=document.createElement("link");link.href="/static/style.css?"+x,link.rel="stylesheet",link.type="text/css",document.getElementsByTagName("head")[0].appendChild(link);</script>
+    <title>{% block title %}{% endblock %}fastl.ink - Short URLs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="fastl.ink - Quick &amp; simple short URLs">
+    <meta name="keywords" content="short,URL,URLs,links,link,shortlink,shortener">
     {% endblock %}
 </head>
 <body>
     <div id="header">
-        <script>
-            var x = new Date()
-            x = x.getTime()
-            var logo = document.createElement( "img" );
-            logo.src = '/static/logo.svg?'+ x
-            logo.id = 'logo'
-            document.getElementById( "header" ).appendChild( logo );
-        </script>
-
+        <script>var x=new Date;x=x.getTime();var logo=document.createElement("img");logo.src="/static/logo.svg?"+x,logo.id="logo",document.getElementById("header").appendChild(logo);</script>
     </div>
     <div id="content">
         {% block content %}
