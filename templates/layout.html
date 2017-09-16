@@ -11,11 +11,14 @@
 </head>
 <body>
     <div id="header">
-        <script>var x=new Date;x=x.getTime();var logo=document.createElement("img");logo.src="/static/logo.svg?"+x,logo.id="logo",document.getElementById("header").appendChild(logo);</script>
+        <a href="/"><div id="logo"></div></a>
+        <script>var x=new Date;x=x.getTime();var logo=document.createElement("img");logo.src="/static/logo.svg?"+x,logo.id="logo",document.getElementById("logo").appendChild(logo);</script>
     </div>
     <div id="content">
         {% block content %}
         {% endblock %}
+
+        <a href="/stats">Have a fastlink? Check out the stats here!</a>
     </div>
     <div id="footer">
         {% block footer %}

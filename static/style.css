@@ -15,7 +15,7 @@ body {
 a { color: #fafafa; text-decoration: underline; }
 a:hover { text-decoration: none; }
 
-#logo {
+#header {
   margin: 0 auto;
   display: block;
 }
@@ -55,7 +55,7 @@ input { box-sizing: border-box; }
 
 
 @media only screen and (max-width: 650px) {
-  #logo { width: 50%; }
+  #header { width: 50%; }
   #content { width: 80%; }
   input, button {
     padding: 5px;
@@ -68,7 +68,7 @@ input { box-sizing: border-box; }
     font-size: large;
     margin-bottom: 15px;
   }
-  #logo { width: 30% }
+  #header { width: 30% }
   #content { width: 60% }
   #cb {
     width: 20%;

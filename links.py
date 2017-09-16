@@ -30,7 +30,15 @@ def new_link(link_str):
         return next_link['short_id']
 
 # search mongo collection for id = link_id
-def short_id_search(link_id):
+def find_link(link_id):
+    # if link exists, update click count
+    check = LINKS.find_one({'short_id': link_id})
+    if check is not None:
+        return check
+    else:
+        return None
+
+def click_link(link_id):
     # if link exists, update click count
     check = LINKS.find_one({'short_id': link_id})
     if check is not None:

@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% if error %}
+    <p><b>ERROR:</b> {{ error }}</p>
+{% endif %}
+
+<form action='/stats' method='POST'>
+    <input id='link' name='link' placeholder='Paste a fastlink for stats...' />
+    <button type='submit'>Find Stats</button>
+</form>
+
+{% if stats_link %}
+    <p><b><i>Original Link</i>:</b>  <a href="{{stats_link.uri}}">{{stats_link.uri}}</a></p>
+    <p><b><i>fastlink</i>:</b>  <a href="https://fastl.ink/{{stats_link.short_id}}">https://fastl.ink/{{stats_link.short_id}}</a></p>
+    <p><b><i># of clicks</i>:</b>  {{stats_link.clicks}}</p>
+{% endif %}
+
+{% endblock %}

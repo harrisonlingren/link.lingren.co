@@ -18,12 +18,33 @@ def index():
 
 @app.route('/<link_id>')
 def link_redirect(link_id):
-    redir_link = links.short_id_search(link_id)
+    redir_link = links.click_link(link_id)
     print('redir: %s' % redir_link)
     if redir_link:
         return redirect(redir_link['uri'])
     else:
         return abort(404), 404
+
+@app.route('/stats', methods=['GET', 'POST'])
+def stats():
+    if request.method == 'POST':
+        link = request.form['link']
+        if 'https://fastl.ink' in link:
+            link_id = link.split('/')[-1]
+            if len(link_id) == 6:
+                link_obj = links.find_link(link_id)
+                return render_template('/stats.html', stats_link=link_obj)
+            else:
+                return render_template('/stats.html', error="Looks like that isn't a valid fastlink!")
+        else:
+            return render_template('/stats.html', error="Looks like that isn't a valid fastlink!")
+    elif request.method == 'GET':
+        return render_template('/stats.html')
+
+@app.route('/stats/<link_id>')
+def stats_by_id(link_id):
+    link_obj = links.find_link(link_id)
+    return render_template('/stats.html', stats_link=link_obj)
 
 @app.errorhandler(404)
 def page_not_found(e):
