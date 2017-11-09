@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect, render_template, abort
-from urlparse import urlparse
+from urllib.parse import urlparse
 import links, json
 
 app = Flask(__name__)
