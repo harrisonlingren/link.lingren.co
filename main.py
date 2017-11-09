@@ -1,6 +1,6 @@
 from flask import Flask, request, redirect, render_template, abort
-from urllib.parse import urlparse
-import links
+from urlparse import urlparse
+import links, json
 
 app = Flask(__name__)
 
@@ -8,7 +8,7 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         shortlink = make_shortlink(request.form['link'])
-        print('SHORTLINK: %s' % shortlink)
+        #print('SHORTLINK: %s' % shortlink)
         if shortlink:
             return render_template('/index.html', new_link=shortlink)
         else:
@@ -19,7 +19,7 @@ def index():
 @app.route('/<link_id>')
 def link_redirect(link_id):
     redir_link = links.click_link(link_id)
-    print('redir: %s' % redir_link)
+    #print('redir: %s' % redir_link)
     if redir_link:
         return redirect(redir_link['uri'])
     else:
@@ -45,6 +45,16 @@ def stats():
 def stats_by_id(link_id):
     link_obj = links.find_link(link_id)
     return render_template('/stats.html', stats_link=link_obj)
+
+@app.route('/api/new', methods=['POST'])
+def api_create():
+    req_body = request.get_json(force=True)
+    try:
+        req_url = req_body['url']
+    except KeyError:
+        return abort(400), 400
+    return ( 'https://fastl.ink/' + make_shortlink(req_url) )
+
 
 @app.errorhandler(404)
 def page_not_found(e):
