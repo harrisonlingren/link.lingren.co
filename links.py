@@ -59,7 +59,8 @@ def generate_new_id():
     while searching:
         nextIdBase = random.randint(1252332576, 82653950015)
         nextId = BaseN.DecToBaseN(str(nextIdBase), DIGIT_SET)
-        print('searching for %s' % nextId)
-        if LINKS.find_one({'short_id': nextId}) is None:
-            searching = False
+        if nextId[-1] not in ['.', '-', '_', '~']:
+            print('searching for %s' % nextId)
+            if LINKS.find_one({'short_id': nextId}) is None:
+                searching = False
     return nextId
