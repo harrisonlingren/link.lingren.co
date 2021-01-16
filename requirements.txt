@@ -1,3 +1,4 @@
 Flask>=0.12.2
-pymongo>=3.1.1
 gunicorn>=19.7.1
+pymongo[tls]>=3.7.2
+dnspython>=1.16.0
